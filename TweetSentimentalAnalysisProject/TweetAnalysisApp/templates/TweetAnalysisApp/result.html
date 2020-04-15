@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <title>Tweet Analysis</title>
+    <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/business-analytics-6/91/Business_analytics_15-512.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        font-family:Comic Sans MS, Comic Sans, cursive;
+    }
+    .header{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        background:#8E07FF;
+        padding:25px;
+        border-bottom:2px solid #fff;
+    }
+    .content{
+        position:relative;
+        top:150px;
+    }
+    .side-block{
+        position:fixed;
+        top:100px;
+        left:0;
+        padding:50px;
+        background:#8E07FF;
+        z-index:-1;
+    }
+    ul{
+        margin-left:-50px;
+    }
+    li{
+        padding:10px 10px;
+        color:white;
+        list-style:none;
+    }
+    span{
+        color:#FFF407;
+        font-weight:900;
+    }
+    @media screen and (max-width: 1200px){
+      .side-block{
+        display:none;
+      }
+    }
+</style>
+<body>
+    <div class="header">
+        <nav>
+            <img src="https://cdn1.iconfinder.com/data/icons/business-analytics-6/91/Business_analytics_15-512.png" style="display:inline-block;float:left;margin-right:10px;margin-top:-5px;" width="50" height="auto" alt="logo">
+            <h2 style="margin-left:50px;color:#fff;">Emerald Tech</h2>
+            <form action="/">
+            <button class="btn btn-warning py-0" type="submit"  style="float:right;margin-top:-35px;">Back</button>
+            </form>
+        </nav>
+    </div>
+    <div class="side-block">
+        <div>
+            <h4 style="color:#2AFF23;font-weight:700;">Our Emeralds</h4>
+        </div>
+        <div>
+            <ul>
+                <li><span>CEO  </span>G.Revathi</li>
+                <li><span>Manager </span>R.Kabilamoorthi</li>
+                <li><span>Researcher  </span>D.Pooja</li>
+                <li><span>ML Manager  </span>R.Raj kumar</li>
+                <li><span>NLP Engineer  </span>R.K Dharani</li>
+                <li><span>Architech  </span>R.Ajay</li>
+                <li><span>NLP Engineer  </span>G.R Pavithra</li>
+                <li><span>Architect  </span>M.Bhuvaneshwaran</li>
+                <li><span>Executer  </span>R.Priyadharshni</li>
+            </ul>
+        </div>
+    </div>
+    <center class="content">
+    <h2 style="color:#8E07FF;">Result Of Your Tweet Analysis</h2>
+        <h3><span style="color:#8E07FF;">Your Tweet - </span> {{tweet}}</h3>
+    {% if 'Negative' == sentiment %}
+        <h3><span style="color:#8E07FF;">Your Sentiment</span> - <span style="color:red;">{{sentiment}}</span></h3>
+        <img src="https://www.pngfind.com/pngs/m/238-2383371_sad-emoticon-png-new-iphone-emojis-transparent-png.png" width="300" height="auto" alt="smily-emoji">
+    {% elif 'Positive' == sentiment %}
+        <h3><span style="color:#8E07FF;">Your Sentiment</span> - <span style="color:green;">{{sentiment}}</span></h3>
+        <img src="https://banner2.cleanpng.com/20180712/rtl/kisspng-emoticon-emoji-smiley-peace-symbols-online-chat-happy-smile-5b46e9d9659196.753874711531374041416.jpg" width="300" height="auto" alt="smily-emoji">
+    {% else %}
+        <h2><span style="color:#8E07FF;">Your Sentiment</span>- {{sentiment}}</h2>
+    {% endif %}
+    </center>
+</body>
+</html>

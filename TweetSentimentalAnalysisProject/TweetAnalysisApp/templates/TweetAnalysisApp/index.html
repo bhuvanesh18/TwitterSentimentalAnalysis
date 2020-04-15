@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tweet Analysis</title>
+    <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/business-analytics-6/91/Business_analytics_15-512.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        font-family:Comic Sans MS, Comic Sans, cursive;
+    }
+    #header{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        background:#8E07FF;
+        padding:25px;
+        z-index:100;
+    }
+    .content{
+        position:relative;
+        top:150px;
+    }
+    .side-block{
+        position:fixed;
+        top:100px;
+        left:0;
+        padding:50px;
+        background:#8E07FF;
+        z-index:100;
+    }
+    ul{
+        margin-left:-50px;
+    }
+    li{
+        padding:10px 10px;
+        color:white;
+        list-style:none;
+        font-weight:900;
+    }
+    span{
+        color:#FFF407;
+        font-weight:600;
+    }
+    #chk , #toggle{
+        display:none;
+    }
+     @media screen and (max-width: 1200px){
+      .side-block{
+        display:none;
+      }
+      #toggle{
+        display:block;
+        top:30px;
+        position:fixed;
+        z-index:101;
+        right:20px;
+      }
+      #chk:checked ~ .side-block{
+        display:block;
+      }
+    }
+</style>
+<body>
+    <div id="header">
+        <nav>
+            <img src="https://cdn1.iconfinder.com/data/icons/business-analytics-6/91/Business_analytics_15-512.png" style="display:inline-block;float:left;margin-right:10px;margin-top:-5px;" width="50" height="auto" alt="logo">
+            <h2 style="margin-left:50px;color:#fff;">Emerald Tech</h2>
+        </nav>
+    </div>
+    <div>
+        <input type="checkbox" id="chk">
+        <label for="chk" id="toggle" class="btn btn-warning">View Team</label>
+        <div class="side-block">
+            <div>
+                <h4 style="color:#2AFF23;font-weight:700;">Our Emeralds</h4>
+            </div>
+            <div>
+                <ul>
+                    <li><span>CEO  </span>G.Revathi</li>
+                    <li><span>Manager </span>R.Kabilamoorthi</li>
+                    <li><span>Researcher  </span>D.Pooja</li>
+                    <li><span>ML Manager  </span>R.Raj kumar</li>
+                    <li><span>NLP Engineer  </span>R.K Dharani</li>
+                    <li><span>Architect  </span>R.Ajay</li>
+                    <li><span>NLP Engineer  </span>G.R Pavithra</li>
+                    <li><span>Architech  </span>M.Bhuvaneshwaran</li>
+                    <li><span>Executer  </span>R.Priyadharshni</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <center class="content">
+        <h1>Tweet Sentimental Analysis</h1>
+        <form  action='analysis' method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter ur tweet here" name="utweet" class="py-1 text-center">
+            <button type="submit" class="btn btn-success py-1">Analysis</button>
+        </form>
+        <br>
+        <h1>HashTag Analysis</h1>
+        <form action="hashtag_analysis" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Enter ur hashtag here" name="hashtag" class="py-1 text-center">
+            <br>
+            <button class="btn btn-warning py-1 mt-2">Click For HashTag Analysis</button>
+        </form>
+    </center>
+</body>
+</html>
